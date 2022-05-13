@@ -37,9 +37,12 @@ class _MyAppState extends State<MyApp> {
               questions[_questionIndex],
             ),
             ElevatedButton(
-              onPressed: _answerQuestion,
-              child: Text('Answer 1'),
-            ),
+                onPressed: _answerQuestion,
+                child: Text('Answer 1'),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                )),
             ElevatedButton(
               onPressed: () => print('Answer 2 chosen'),
               child: Text('Answer 2'),
