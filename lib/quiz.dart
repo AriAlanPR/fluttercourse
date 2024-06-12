@@ -7,10 +7,10 @@ class Quiz extends StatelessWidget {
   final VoidCallback answerQuestion;
   final int questionIndex;
 
-  Quiz(
-      {required this.questions,
+  const Quiz(
+      {Key? key, required this.questions,
       required this.answerQuestion,
-      required this.questionIndex});
+      required this.questionIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

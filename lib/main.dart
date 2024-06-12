@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercourse/answer.dart';
 import './quiz.dart';
 import './result.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -69,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                 questions: questions,
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex)
-            : Result(),
+            : const Result(),
       ),
     );
   }
