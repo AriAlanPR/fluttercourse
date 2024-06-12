@@ -1,20 +1,27 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import './quiz.dart';
 import './result.dart';
 
 void main() => runApp(const MyApp());
 
+void _print(String text) {
+  if (kDebugMode) {
+    print(text);
+  }
+}
+
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
 
 class _MyAppState extends State<MyApp> {
+  final _colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
   var _questionIndex = 0;
   final questions = [
     {
@@ -50,20 +57,23 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _questionIndex += 1;
     });
-    print(_questionIndex);
+    _print(_questionIndex.toString());
     if (_questionIndex < questions.length) {
-      print("We have more questions!");
+      _print("We have more questions!");
     } else {
-      print("No more questions!");
+      _print("No more questions!");
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    // Add more properties as needed
     return MaterialApp(
+      theme: ThemeData.from(colorScheme: _colorScheme),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My First App'),
+          title: const Text('My Test App'),
+          backgroundColor: _colorScheme.inversePrimary,
         ),
         body: _questionIndex < questions.length
             ? Quiz(
@@ -71,6 +81,11 @@ class _MyAppState extends State<MyApp> {
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex)
             : const Result(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _print("calling local notification");
+          },
+        ),
       ),
     );
   }
