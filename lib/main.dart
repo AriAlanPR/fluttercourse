@@ -85,6 +85,7 @@ class _MyAppState extends State<MyApp> {
           onPressed: () {
             _print("calling local notification");
           },
+          child: const Icon(Icons.notifications),
         ),
       ),
     );
