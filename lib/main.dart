@@ -1,9 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercourse/services/notifications.dart';
 import './quiz.dart';
 import './result.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().init();
+  runApp(const MyApp());
+}
 
 void _print(String text) {
   if (kDebugMode) {
@@ -84,6 +89,7 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             _print("calling local notification");
+            NotificationService().send(title: 'My test notification', body: 'This test notification works!');
           },
           child: const Icon(Icons.notifications),
         ),
